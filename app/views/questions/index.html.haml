@@ -1,0 +1,30 @@
+%h1
+  Would you like to ask a question?
+
+=link_to "New Question!", new_question_path
+
+%h1
+  All these questions are everybody's questions.
+
+.first-question
+  .title
+    = @firstQuestion.title
+  .query
+    = @firstQuestion.query
+  .total-answers
+    = "Total Answers: #{@firstQuestion.answers.count}"
+  .total-votes
+    = "Total Votes: #{@firstQuestion.count_votes}"
+  
+
+.questions-list
+  - @remainderOfQuestions.each do |question|
+    = render 'question', :question =>question
+
+
+
+
+
+
+
+  

@@ -1,0 +1,28 @@
+%h1
+  = @question.title
+%h2  
+  = @question.query
+
+%h1
+  Answers:
+
+- @question.answers.each do |answer|
+  .response
+    = answer.response
+    .total-votes-label
+      Votes:
+    .total-votes-value{id: "answer_" + answer.id.to_s}
+      = answer.votes
+    .up-vote{id: answer.id}
+      +
+    
+    
+
+%h1 
+  Add Your Own Anwser!
+
+= simple_form_for :answer, url: question_answers_path(@question.id) do |f|
+  = f.input :response
+  = f.submit
+
+= link_to 'Return to All Questions', questions_path
